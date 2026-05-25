@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitLife - 健身与健康饮食</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- 1. 登录 -->
+  <section id="page-login" class="page active">
+    <div class="login-wrap">
+      <div class="login-hero">
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50e?w=800&q=80" alt="健身">
+      </div>
+      <div class="login-box">
+        <h1>FitLife</h1>
+        <p class="sub">健身导引 · 卡路里查询 · 科学训练</p>
+        <form id="login-form">
+          <input type="text" placeholder="用户名" required>
+          <input type="password" placeholder="密码" required>
+          <button type="submit" class="btn">登录进入</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 共用侧栏布局 -->
+  <template id="app-shell">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">Fit<span>Life</span></div>
+        <span class="nav-item" data-nav="home">🏠 首页</span>
+        <span class="nav-item" data-nav="foods">🥗 食物卡路里</span>
+        <span class="nav-item" data-nav="meals">📋 饮食方案</span>
+        <span class="nav-item" data-nav="exercises">💪 部位训练排行</span>
+        <span class="nav-item" data-nav="plans">📅 训练计划</span>
+        <span class="nav-item" data-nav="calculator">📊 健康计算器</span>
+        <span class="nav-item" data-nav="profile">👤 个人中心</span>
+      </aside>
+      <main class="main" id="main-content"></main>
+    </div>
+  </template>
+
+  <!-- 2. 首页 -->
+  <section id="page-home" class="page">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">Fit<span>Life</span></div>
+        <span class="nav-item active" data-nav="home">🏠 首页</span>
+        <span class="nav-item" data-nav="foods">🥗 食物卡路里</span>
+        <span class="nav-item" data-nav="meals">📋 饮食方案</span>
+        <span class="nav-item" data-nav="exercises">💪 部位训练排行</span>
+        <span class="nav-item" data-nav="plans">📅 训练计划</span>
+        <span class="nav-item" data-nav="calculator">📊 健康计算器</span>
+        <span class="nav-item" data-nav="profile">👤 个人中心</span>
+      </aside>
+      <main class="main">
+        <div class="hero-banner">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50e?w=1200&q=80" alt="">
+          <div class="overlay">
+            <h2>科学健身，合理饮食</h2>
+            <p>查询卡路里 · 按部位训练排序 · 定制健康方案</p>
+          </div>
+        </div>
+        <div class="stats-row" id="home-stats"></div>
+        <h3 style="margin-bottom:16px">快速进入训练部位</h3>
+        <div class="quick-grid" id="home-quick"></div>
+      </main>
+    </div>
+  </section>
+
+  <!-- 3. 食物卡路里 -->
+  <section id="page-foods" class="page">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">Fit<span>Life</span></div>
+        <span class="nav-item" data-nav="home">🏠 首页</span>
+        <span class="nav-item active" data-nav="foods">🥗 食物卡路里</span>
+        <span class="nav-item" data-nav="meals">📋 饮食方案</span>
+        <span class="nav-item" data-nav="exercises">💪 部位训练排行</span>
+        <span class="nav-item" data-nav="plans">📅 训练计划</span>
+        <span class="nav-item" data-nav="calculator">📊 健康计算器</span>
+        <span class="nav-item" data-nav="profile">👤 个人中心</span>
+      </aside>
+      <main class="main">
+        <h1 class="page-title">食物卡路里库</h1>
+        <p class="page-desc">查询常见食物热量与三大营养素（每100g/100ml）</p>
+        <div class="filter-bar" id="food-filters">
+          <button type="button" class="active" data-food-cat="全部">全部</button>
+          <button type="button" data-food-cat="主食">主食</button>
+          <button type="button" data-food-cat="蛋白质">蛋白质</button>
+          <button type="button" data-food-cat="蔬菜">蔬菜</button>
+          <button type="button" data-food-cat="水果">水果</button>
+          <button type="button" data-food-cat="饮品">饮品</button>
+          <button type="button" data-food-cat="零食">零食</button>
+        </div>
+        <div class="food-grid" id="food-grid"></div>
+      </main>
+    </div>
+  </section>
+
+  <!-- 4. 饮食方案 -->
+  <section id="page-meals" class="page">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">Fit<span>Life</span></div>
+        <span class="nav-item" data-nav="home">🏠 首页</span>
+        <span class="nav-item" data-nav="foods">🥗 食物卡路里</span>
+        <span class="nav-item active" data-nav="meals">📋 饮食方案</span>
+        <span class="nav-item" data-nav="exercises">💪 部位训练排行</span>
+        <span class="nav-item" data-nav="plans">📅 训练计划</span>
+        <span class="nav-item" data-nav="calculator">📊 健康计算器</span>
+        <span class="nav-item" data-nav="profile">👤 个人中心</span>
+      </aside>
+      <main class="main">
+        <h1 class="page-title">健康饮食方案</h1>
+        <p class="page-desc">减脂、增肌、均衡饮食参考搭配</p>
+        <div class="meal-grid" id="meal-grid"></div>
+      </main>
+    </div>
+  </section>
+
+  <!-- 5. 部位训练排行 -->
+  <section id="page-exercises" class="page">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">Fit<span>Life</span></div>
+        <span class="nav-item" data-nav="home">🏠 首页</span>
+        <span class="nav-item" data-nav="foods">🥗 食物卡路里</span>
+        <span class="nav-item" data-nav="meals">📋 饮食方案</span>
+        <span class="nav-item active" data-nav="exercises">💪 部位训练排行</span>
+        <span class="nav-item" data-nav="plans">📅 训练计划</span>
+        <span class="nav-item" data-nav="calculator">📊 健康计算器</span>
+        <span class="nav-item" data-nav="profile">👤 个人中心</span>
+      </aside>
+      <main class="main">
+        <h1 class="page-title">部位训练动作排行</h1>
+        <p class="page-desc">按训练效果排序，优先推荐 Top 动作（效果指数 1-10）</p>
+        <div class="body-tabs" id="body-tabs"></div>
+        <div id="exercise-list"></div>
+      </main>
+    </div>
+  </section>
+
+  <!-- 6. 训练计划 -->
+  <section id="page-plans" class="page">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">Fit<span>Life</span></div>
+        <span class="nav-item" data-nav="home">🏠 首页</span>
+        <span class="nav-item" data-nav="foods">🥗 食物卡路里</span>
+        <span class="nav-item" data-nav="meals">📋 饮食方案</span>
+        <span class="nav-item" data-nav="exercises">💪 部位训练排行</span>
+        <span class="nav-item active" data-nav="plans">📅 训练计划</span>
+        <span class="nav-item" data-nav="calculator">📊 健康计算器</span>
+        <span class="nav-item" data-nav="profile">👤 个人中心</span>
+      </aside>
+      <main class="main">
+        <h1 class="page-title">训练计划</h1>
+        <p class="page-desc">新手到进阶的系统化训练安排</p>
+        <div class="plan-grid" id="plan-grid"></div>
+      </main>
+    </div>
+  </section>
+
+  <!-- 7. 健康计算器 -->
+  <section id="page-calculator" class="page">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">Fit<span>Life</span></div>
+        <span class="nav-item" data-nav="home">🏠 首页</span>
+        <span class="nav-item" data-nav="foods">🥗 食物卡路里</span>
+        <span class="nav-item" data-nav="meals">📋 饮食方案</span>
+        <span class="nav-item" data-nav="exercises">💪 部位训练排行</span>
+        <span class="nav-item" data-nav="plans">📅 训练计划</span>
+        <span class="nav-item active" data-nav="calculator">📊 健康计算器</span>
+        <span class="nav-item" data-nav="profile">👤 个人中心</span>
+      </aside>
+      <main class="main">
+        <h1 class="page-title">健康计算器</h1>
+        <p class="page-desc">计算 BMI、基础代谢与每日建议摄入热量</p>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start">
+          <form class="calc-box" id="calc-form">
+            <label>身高 (cm)</label>
+            <input type="number" id="calc-height" value="170" required>
+            <label>体重 (kg)</label>
+            <input type="number" id="calc-weight" value="65" required>
+            <label>年龄</label>
+            <input type="number" id="calc-age" value="25" required>
+            <label>性别</label>
+            <select id="calc-sex"><option value="m">男</option><option value="f">女</option></select>
+            <label>活动系数</label>
+            <select id="calc-activity">
+              <option value="1.2">久坐</option>
+              <option value="1.375">轻度活动</option>
+              <option value="1.55" selected>中度运动</option>
+              <option value="1.725">高强度</option>
+            </select>
+            <button type="submit" class="btn" style="margin-top:16px">开始计算</button>
+          </form>
+          <div class="calc-result" id="calc-result"></div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80" alt="" style="margin-top:32px;border-radius:12px;max-width:400px">
+      </main>
+    </div>
+  </section>
+
+  <!-- 8. 个人中心 -->
+  <section id="page-profile" class="page">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="logo">Fit<span>Life</span></div>
+        <span class="nav-item" data-nav="home">🏠 首页</span>
+        <span class="nav-item" data-nav="foods">🥗 食物卡路里</span>
+        <span class="nav-item" data-nav="meals">📋 饮食方案</span>
+        <span class="nav-item" data-nav="exercises">💪 部位训练排行</span>
+        <span class="nav-item" data-nav="plans">📅 训练计划</span>
+        <span class="nav-item" data-nav="calculator">📊 健康计算器</span>
+        <span class="nav-item active" data-nav="profile">👤 个人中心</span>
+      </aside>
+      <main class="main">
+        <h1 class="page-title">个人中心</h1>
+        <div class="profile-card">
+          <div class="profile-avatar">🏃</div>
+          <h2>FitLife 用户</h2>
+          <p style="color:var(--muted);margin-top:8px">坚持运动，科学饮食</p>
+          <div class="profile-links">
+            <span data-nav="foods">查看卡路里库</span>
+            <span data-nav="exercises">训练动作排行</span>
+            <span data-nav="calculator">健康计算器</span>
+            <span data-nav="login">退出登录</span>
+          </div>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
